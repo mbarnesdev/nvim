@@ -33,13 +33,30 @@ vim.opt.termguicolors = true
 vim.opt.scrolloff = 8
 vim.opt.signcolumn = "yes"
 vim.opt.isfname:append("@-@")
-vim.opt.updatetime = 50
+vim.opt.updatetime = 1000
 
 vim.keymap.set("n", "<leader>pv", vim.cmd.Ex)
 vim.keymap.set("v", "J", ":m '>+1<CR>gv=gv")
 vim.keymap.set("v", "K", ":m '<-2<CR>gv=gv")
 vim.keymap.set("n", "<C-d>", "<C-d>zz")
 vim.keymap.set("n", "<C-u>", "<C-u>zz")
+
+--[[
+vim.opt.cursorline = true -- Highlight the current line
+local group = vim.api.nvim_create_augroup("CursorLineControl", { clear = true })
+local set_cursorline = function(event, value, pattern)
+  vim.api.nvim_create_autocmd(event, {
+    group = group,
+    pattern = pattern,
+    callback = function()
+      vim.opt_local.cursorline = value
+    end,
+  })
+end
+set_cursorline("WinLeave", false)
+set_cursorline("WinEnter", true)
+set_cursorline("FileType", false, "TelescopePrompt")
+--]]
 
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
 if not vim.loop.fs_stat(lazypath) then
@@ -176,6 +193,10 @@ local plugins = {
     },
     {
         "github/copilot.vim"
+    },
+    {
+        "numToStr/Comment.nvim",
+        config = true
     }
 }
 
