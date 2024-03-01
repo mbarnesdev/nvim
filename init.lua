@@ -14,12 +14,11 @@ vim.opt.undodir = os.getenv("HOME") .. "/.vim/undodir"
 vim.opt.undofile = true
 vim.opt.hlsearch = false
 vim.opt.incsearch = true
-vim.opt.termguicolors = false
+vim.opt.termguicolors = true
 vim.opt.scrolloff = 8
 vim.opt.signcolumn = "yes"
 vim.opt.isfname:append("@-@")
 vim.opt.updatetime = 50
-
 vim.keymap.set("n", "<leader>pv", vim.cmd.Ex)
 vim.keymap.set("v", "J", ":m '>+1<CR>gv=gv")
 vim.keymap.set("v", "K", ":m '<-2<CR>gv=gv")
@@ -33,13 +32,47 @@ if not vim.loop.fs_stat(lazypath) then
     "clone",
     "--filter=blob:none",
     "https://github.com/folke/lazy.nvim.git",
-    "--branch=stable", -- latest stable release
+    "--branch=stable",
     lazypath,
   })
 end
 vim.opt.rtp:prepend(lazypath)
 
 local plugins = {
+    {
+        "ellisonleao/gruvbox.nvim",
+        priority = 1000,
+        config = function()
+            local gruvbox = require("gruvbox")
+
+            gruvbox.setup({
+                terminal_colors = true,
+                undercurl = true,
+                underline = true,
+                bold = true,
+                italic = {
+                    strings = true,
+                    emphasis = true,
+                    comments = true,
+                    operators = false,
+                    folds = true,
+                },
+                strikethrough = true,
+                invert_selection = false,
+                invert_signs = false,
+                invert_tabline = false,
+                invert_intend_guides = false,
+                inverse = true,
+                contrast = "",
+                palette_overrides = {},
+                overrides = {},
+                dim_inactive = false,
+                transparent_mode = true
+            })
+
+            vim.cmd([[colorscheme gruvbox]])
+        end
+    },
 	{
 		"theprimeagen/harpoon",
 		dependencies = {
@@ -54,40 +87,76 @@ local plugins = {
 			vim.keymap.set("n", "<C-t>", function() ui.nav_file(2) end)
 			vim.keymap.set("n", "<C-n>", function() ui.nav_file(3) end)
 			vim.keymap.set("n", "<C-s>", function() ui.nav_file(4) end)
-		end
+        end
 	},
 	{
-  "nvim-telescope/telescope.nvim",
-  branch = "0.1.x",
-  dependencies = {
-    "nvim-lua/plenary.nvim",
-  },
-  config = function()
-    local telescope = require("telescope")
-    local actions = require("telescope.actions")
-
-    telescope.setup({
-      defaults = {
-        path_display = { "truncate " },
-        mappings = {
-          i = {
-            ["<C-k>"] = actions.move_selection_previous, -- move to prev result
-            ["<C-j>"] = actions.move_selection_next, -- move to next result
-          },
+        "nvim-telescope/telescope.nvim",
+        branch = "0.1.x",
+        dependencies = {
+            "nvim-lua/plenary.nvim",
         },
-      },
-    })
+        config = function()
+            local telescope = require("telescope")
+            local actions = require("telescope.actions")
+            local builtin = require("telescope.builtin")
 
-    local builtin = require("telescope.builtin")
-    vim.keymap.set('n', '<leader>pf', builtin.find_files, {})
-    vim.keymap.set('n', '<C-p>', builtin.git_files, {})
-    vim.keymap.set("n", "<leader>ps", "<cmd>Telescope grep_string<cr>", {})
-  end,
-	}
+            telescope.setup({
+                defaults = {
+                    path_display = {
+                        "truncate "
+                    },
+                    mappings = {
+                        i = {
+                            ["<C-k>"] = actions.move_selection_previous,
+                            ["<C-j>"] = actions.move_selection_next,
+                        },
+                    },
+                },
+            })
+
+            vim.keymap.set('n', '<leader>pf', builtin.find_files, {})
+            vim.keymap.set('n', '<C-p>', builtin.git_files, {})
+            vim.keymap.set("n", "<leader>ps", "<cmd>Telescope grep_string<cr>", {})
+        end,
+    },
+    {
+        "nvim-treesitter/nvim-treesitter",
+        build = {
+            ":TSUpdate"
+        },
+        config = function ()
+            local configs = require("nvim-treesitter.configs")
+            
+            configs.setup({
+                ensure_installed = {
+                    "lua",
+                    "php",
+                    "javascript",
+                    "jsdoc",
+                    "typescript",
+                    "bash",
+                    "astro",
+                    "yaml",
+                    "svelte",
+                    "regex",
+                    "markdown",
+                    "json",
+                    "html",
+                    "go",
+                    "dockerfile",
+                    "css",
+                },
+                highlight = {
+                    enable = true
+                },
+                indent = {
+                    enable = true
+                }
+            })
+        end
+    }
 }
 
 local opts = {}
 
 require("lazy").setup(plugins, opts)
-
-
