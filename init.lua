@@ -14,6 +14,7 @@ vim.g.loaded_matchit = 1
 vim.g.loaded_matchparen = 1
 vim.g.loaded_logiPat = 1
 vim.g.loaded_rrhelper = 1
+
 vim.opt.nu = true
 vim.opt.relativenumber = true
 vim.opt.tabstop = 4
@@ -34,7 +35,7 @@ vim.opt.signcolumn = "yes"
 vim.opt.isfname:append "@-@"
 vim.opt.updatetime = 1000
 
-vim.keymap.set("n", "<leader>pv", vim.cmd.Ex)
+vim.keymap.set("n", "<leader>pv", "<cmd>Oil<CR>")
 vim.keymap.set("v", "J", ":m '>+1<CR>gv=gv")
 vim.keymap.set("v", "K", ":m '<-2<CR>gv=gv")
 vim.keymap.set("n", "<C-d>", "<C-d>zz")
@@ -54,6 +55,24 @@ end
 vim.opt.rtp:prepend(lazypath)
 
 require("lazy").setup({
+  {
+    "stevearc/oil.nvim",
+    config = function()
+      local oil = require "oil"
+
+      oil.setup {
+        default_file_explorer = true,
+        columns = {
+          "icon",
+        },
+        skip_confirm_for_simple_edits = true,
+      }
+    end,
+    dependencies = {
+      "nvim-tree/nvim-web-devicons",
+    },
+    opts = {},
+  },
   {
     "tpope/vim-sleuth",
   },
