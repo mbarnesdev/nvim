@@ -147,6 +147,22 @@ require("lazy").setup({
       local builtin = require "telescope.builtin"
 
       telescope.setup {
+        pickers = {
+          find_files = {
+            find_command = {
+              "rg",
+              "--no-ignore",
+              "--hidden",
+              "--files",
+              "-g",
+              "!**/node_modules/*",
+              "-g",
+              "!**/.git/*",
+              "-g",
+              "!**/vendor/*",
+            },
+          },
+        },
         defaults = {
           file_ignore_patterns = {
             "^.git/",
