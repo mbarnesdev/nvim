@@ -129,6 +129,11 @@ require("lazy").setup({
 
       telescope.setup {
         defaults = {
+          file_ignore_patterns = {
+            "^.git/",
+            "^vendor/",
+            "^node_modules/",
+          },
           path_display = {
             "truncate ",
           },
