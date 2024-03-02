@@ -15,6 +15,7 @@ vim.g.loaded_matchparen = 1
 vim.g.loaded_logiPat = 1
 vim.g.loaded_rrhelper = 1
 
+vim.opt.guicursor = ""
 vim.opt.nu = true
 vim.opt.relativenumber = true
 vim.opt.tabstop = 4
@@ -34,6 +35,7 @@ vim.opt.scrolloff = 8
 vim.opt.signcolumn = "yes"
 vim.opt.isfname:append "@-@"
 vim.opt.updatetime = 1000
+vim.opt.mouse = ""
 
 vim.keymap.set("n", "<leader>pv", "<cmd>Oil<CR>")
 vim.keymap.set("v", "J", ":m '>+1<CR>gv=gv")
@@ -382,6 +384,9 @@ require("lazy").setup({
           "stylua",
         },
         javascript = {
+          "prettierd",
+        },
+        typescript = {
           "prettierd",
         },
       },
