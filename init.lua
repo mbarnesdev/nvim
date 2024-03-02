@@ -275,39 +275,22 @@ require("lazy").setup({
     end,
   },
   {
-    "stevearc/conform.nvim",
-    opts = {
-      notify_on_error = false,
-      format_on_save = {
-        timeout_ms = 500,
-        lsp_fallback = true,
-      },
-      formatters_by_ft = {
-        lua = {
-          "stylua",
-        },
-        javascript = {
-          "prettierd",
-        },
-      },
-    },
-  },
-  {
     "hrsh7th/nvim-cmp",
     event = "InsertEnter",
-    {
-      "L3MON4D3/LuaSnip",
-      build = (function()
-        if vim.fn.has "win32" == 1 or vim.fn.executable "make" == 0 then
-          return
-        end
-        return "make install_jsregexp"
-      end)(),
+    dependencies = {
+      {
+        "L3MON4D3/LuaSnip",
+        build = (function()
+          if vim.fn.has "win32" == 1 or vim.fn.executable "make" == 0 then
+            return
+          end
+          return "make install_jsregexp"
+        end)(),
+      },
+      "saadparwaiz1/cmp_luasnip",
+      "hrsh7th/cmp-nvim-lsp",
+      "hrsh7th/cmp-path",
     },
-    "saadparwaiz1/cmp_luasnip",
-    "hrsh7th/cmp-nvim-lsp",
-    "hrsh7th/cmp-path",
-    "rafamadriz/friendly-snippets",
     config = function()
       local cmp = require "cmp"
       local luasnip = require "luasnip"
@@ -319,7 +302,9 @@ require("lazy").setup({
             luasnip.lsp_expand(args.body)
           end,
         },
-        completion = { completeopt = "menu,menuone,noinsert" },
+        completion = {
+          completeopt = "menu,menuone,noinsert",
+        },
         mapping = cmp.mapping.preset.insert {
           ["<C-n>"] = cmp.mapping.select_next_item(),
           ["<C-p>"] = cmp.mapping.select_prev_item(),
@@ -343,6 +328,24 @@ require("lazy").setup({
         },
       }
     end,
+  },
+  {
+    "stevearc/conform.nvim",
+    opts = {
+      notify_on_error = false,
+      format_on_save = {
+        timeout_ms = 500,
+        lsp_fallback = true,
+      },
+      formatters_by_ft = {
+        lua = {
+          "stylua",
+        },
+        javascript = {
+          "prettierd",
+        },
+      },
+    },
   },
   {
     "github/copilot.vim",
