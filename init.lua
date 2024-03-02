@@ -58,6 +58,9 @@ vim.opt.rtp:prepend(lazypath)
 
 require("lazy").setup({
   {
+    "tpope/vim-fugitive",
+  },
+  {
     "stevearc/oil.nvim",
     config = function()
       local oil = require "oil"
