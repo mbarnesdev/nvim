@@ -61,6 +61,18 @@ require("lazy").setup({
     "tpope/vim-fugitive",
   },
   {
+    "lewis6991/gitsigns.nvim",
+    opts = {
+      signs = {
+        add = { text = "+" },
+        change = { text = "~" },
+        delete = { text = "_" },
+        topdelete = { text = "‾" },
+        changedelete = { text = "~" },
+      },
+    },
+  },
+  {
     "stevearc/oil.nvim",
     config = function()
       local oil = require "oil"
@@ -414,6 +426,23 @@ require("lazy").setup({
     },
     build = function()
       vim.fn["mkdp#util#install"]()
+    end,
+  },
+  {
+    "echasnovski/mini.surround",
+    version = "*",
+    config = function()
+      local mini_surround = require "mini.surround"
+
+      mini_surround.setup {
+        mappings = {
+          add = "ma",
+          delete = "md",
+          replace = "mr",
+          find = "mf",
+          highlight = "mh",
+        },
+      }
     end,
   },
 }, {})
