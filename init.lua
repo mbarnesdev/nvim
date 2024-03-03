@@ -351,6 +351,7 @@ require("lazy").setup({
     config = function()
       local cmp = require "cmp"
       local luasnip = require "luasnip"
+
       luasnip.config.setup {}
 
       cmp.setup {
@@ -430,7 +431,6 @@ require("lazy").setup({
   },
   {
     "echasnovski/mini.surround",
-    version = "*",
     config = function()
       local mini_surround = require "mini.surround"
 
@@ -447,7 +447,6 @@ require("lazy").setup({
   },
   {
     "echasnovski/mini.statusline",
-    version = "*",
     config = function()
       require("mini.statusline").setup {}
     end,
