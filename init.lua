@@ -66,8 +66,8 @@ require("lazy").setup({
       signs = {
         add = { text = "+" },
         change = { text = "~" },
-        delete = { text = "_" },
-        topdelete = { text = "‾" },
+        delete = { text = "-" },
+        topdelete = { text = "-" },
         changedelete = { text = "~" },
       },
     },
@@ -443,6 +443,13 @@ require("lazy").setup({
           highlight = "mh",
         },
       }
+    end,
+  },
+  {
+    "echasnovski/mini.statusline",
+    version = "*",
+    config = function()
+      require("mini.statusline").setup {}
     end,
   },
 }, {})
