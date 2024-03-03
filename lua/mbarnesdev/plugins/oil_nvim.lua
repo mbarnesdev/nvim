@@ -10,6 +10,8 @@ return {
       },
       skip_confirm_for_simple_edits = true,
     }
+
+    vim.keymap.set("n", "<leader>pv", "<cmd>Oil<CR>")
   end,
   dependencies = {
     "nvim-tree/nvim-web-devicons",
