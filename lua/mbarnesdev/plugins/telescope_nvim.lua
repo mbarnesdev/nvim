@@ -47,7 +47,12 @@ return {
     vim.keymap.set("n", "<leader>pf", builtin.find_files, {})
     vim.keymap.set("n", "<C-p>", builtin.git_files, {})
     vim.keymap.set("n", "<leader>ps", builtin.grep_string, {})
-    vim.keymap.set("n", "<leader>sh", builtin.help_tags, {})
-    vim.keymap.set("n", "<leader>sk", builtin.keymaps, {})
+    vim.keymap.set("n", "<leader>ph", builtin.help_tags, {})
+    vim.keymap.set("n", "<leader>pk", builtin.keymaps, {})
+    vim.keymap.set("n", "<leader>p.", function()
+      builtin.find_files {
+        cwd = vim.fn.stdpath "config",
+      }
+    end, {})
   end,
 }
