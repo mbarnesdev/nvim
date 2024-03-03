@@ -42,6 +42,10 @@ vim.keymap.set("v", "J", ":m '>+1<CR>gv=gv")
 vim.keymap.set("v", "K", ":m '<-2<CR>gv=gv")
 vim.keymap.set("n", "<C-d>", "<C-d>zz")
 vim.keymap.set("n", "<C-u>", "<C-u>zz")
+vim.keymap.set("v", "<", "<gv")
+vim.keymap.set("v", ">", ">gv")
+vim.keymap.set("n", ">", ">>_")
+vim.keymap.set("n", "<", "<<_")
 
 local lazypath = vim.fn.stdpath "data" .. "/lazy/lazy.nvim"
 if not vim.loop.fs_stat(lazypath) then
@@ -430,25 +434,25 @@ require("lazy").setup({
     end,
   },
   {
-    "echasnovski/mini.surround",
-    config = function()
-      local mini_surround = require "mini.surround"
-
-      mini_surround.setup {
-        mappings = {
-          add = "ma",
-          delete = "md",
-          replace = "mr",
-          find = "mf",
-          highlight = "mh",
-        },
-      }
-    end,
-  },
-  {
-    "echasnovski/mini.statusline",
-    config = function()
-      require("mini.statusline").setup {}
-    end,
+    {
+      "echasnovski/mini.statusline",
+      config = function()
+        require("mini.statusline").setup {}
+      end,
+    },
+    {
+      "echasnovski/mini.surround",
+      config = function()
+        require("mini.surround").setup {
+          mappings = {
+            add = "ma",
+            delete = "md",
+            replace = "mr",
+            find = "mf",
+            highlight = "mh",
+          },
+        }
+      end,
+    },
   },
 }, {})
