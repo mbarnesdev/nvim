@@ -441,25 +441,23 @@ require("lazy").setup({
     end,
   },
   {
-    {
-      "echasnovski/mini.statusline",
-      config = function()
-        require("mini.statusline").setup {}
-      end,
-    },
-    {
-      "echasnovski/mini.surround",
-      config = function()
-        require("mini.surround").setup {
-          mappings = {
-            add = "ma",
-            delete = "md",
-            replace = "mr",
-            find = "mf",
-            highlight = "mh",
-          },
-        }
-      end,
-    },
+    "echasnovski/mini.statusline",
+    config = function()
+      require("mini.statusline").setup {}
+    end,
+  },
+  {
+    "echasnovski/mini.surround",
+    config = function()
+      require("mini.surround").setup {
+        mappings = {
+          add = "ma",
+          delete = "md",
+          replace = "mr",
+          find = "mf",
+          highlight = "mh",
+        },
+      }
+    end,
   },
 }, {})
