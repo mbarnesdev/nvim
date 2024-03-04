@@ -17,6 +17,9 @@ return {
         typescript = {
           "prettierd",
         },
+        html = {
+          "prettierd",
+        },
       },
     }
   end,
