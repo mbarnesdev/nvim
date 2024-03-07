@@ -10,6 +10,7 @@ return {
         "typescriptreact",
         "blade",
         "php",
+        "svelte",
       },
     }
   end,

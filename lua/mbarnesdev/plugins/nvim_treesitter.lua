@@ -6,6 +6,7 @@ return {
   config = function()
     local configs = require "nvim-treesitter.configs"
 
+    ---@class ParseInfo[]
     local parser_config = require("nvim-treesitter.parsers").get_parser_configs()
     parser_config.blade = {
       install_info = {
