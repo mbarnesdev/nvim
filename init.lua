@@ -27,4 +27,10 @@ local lazy_config = {
   },
 }
 
+vim.filetype.add {
+  pattern = {
+    [".*%blade%.php"] = "blade",
+  },
+}
+
 require("lazy").setup({ import = plugins_dir }, lazy_config)
