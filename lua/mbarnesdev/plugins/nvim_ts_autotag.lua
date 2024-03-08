@@ -9,6 +9,7 @@ return {
         "typescript",
         "typescriptreact",
         "blade",
+        "astro",
         "php",
         "svelte",
       },
