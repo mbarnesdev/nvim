@@ -7,6 +7,7 @@ return {
         timeout_ms = 500,
         lsp_fallback = true,
       },
+      -- custom formatter
       -- formatters = {
       --   prettier = {
       --   }
