@@ -1,8 +1,6 @@
 return {
   "stevearc/oil.nvim",
   config = function()
-    local oil = require "oil"
-
     require("oil").setup({
       default_file_explorer = true,
       columns = {
@@ -21,5 +19,4 @@ return {
 
     vim.keymap.set("n", "<leader>pv", "<cmd>Oil<CR>")
   end,
-  opts = {},
 }
