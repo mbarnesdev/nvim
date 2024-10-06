@@ -13,8 +13,7 @@ return {
 				mapping = {
 					["<C-n>"] = cmp.mapping.select_next_item(), -- Down
 					["<C-p>"] = cmp.mapping.select_prev_item(), -- Up
-					["<C-space>"] = cmp.mapping.complete(), -- Show completion suggestions
-					["<CR>"] = cmp.mapping.confirm({ select = true }), -- Accept selected completion
+					["<C-y>"] = cmp.mapping.confirm({ select = true }), -- Accept selected completion
 				},
 				sources = {
 					{ name = "nvim_lsp" }, -- LSP source
