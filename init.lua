@@ -1,6 +1,7 @@
 require "mbarnesdev.config.options"
 require "mbarnesdev.config.globals"
 require "mbarnesdev.config.autocmds"
+require "mbarnesdev.config.keymaps"
 
 -- Bootstrap lazy.nvim
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
