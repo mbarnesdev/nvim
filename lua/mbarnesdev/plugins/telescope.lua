@@ -18,5 +18,6 @@ return {
 
 		vim.keymap.set("n", "<leader>pf", "<cmd>Telescope find_files<CR>")
 		vim.keymap.set("n", "<C-p>", "<cmd>Telescope git_files<CR>")
+		vim.keymap.set("n", "<leader>ph", "<cmd>Telescope help_tags<CR>")
 	end,
 }
