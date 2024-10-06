@@ -49,6 +49,10 @@ return {
 				},
 			})
 
+			lspconfig.ts_ls.setup({
+				on_attach = on_attach,
+			})
+
 			lspconfig.gopls.setup({
 				on_attach = on_attach,
 			})
