@@ -36,6 +36,7 @@ return {
 				local opts = { noremap = true, silent = true }
 				buf_set_keymap("n", "gd", "<cmd>lua vim.lsp.buf.definition()<CR>", opts)
 				buf_set_keymap("n", "rn", "<cmd>lua vim.lsp.buf.rename()<CR>", opts)
+				buf_set_keymap("n", "ca", "<cmd>lua vim.lsp.buf.code_action()<CR>", opts)
 			end
 
 			lspconfig.lua_ls.setup({
