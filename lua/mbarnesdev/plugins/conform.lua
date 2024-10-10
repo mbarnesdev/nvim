@@ -7,6 +7,7 @@ return {
 				go = { "gofmt" },
 				html = { "prettier" },
 				json = { "prettier" },
+				astro = { "prettier" },
 				javascript = { "prettier", stop_after_first = true },
 				javascriptreact = { "prettier", stop_after_first = true },
 				typescript = { "prettier", stop_after_first = true },
