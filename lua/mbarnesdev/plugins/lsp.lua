@@ -11,8 +11,9 @@ return {
 			require("mason-lspconfig").setup({
 				ensure_installed = {
 					"lua_ls",
-					"ts_ls",
 					"gopls",
+					"ts_ls",
+					"astro",
 				},
 				automatic_installation = true,
 			})
@@ -51,6 +52,10 @@ return {
 			})
 
 			lspconfig.ts_ls.setup({
+				on_attach = on_attach,
+			})
+
+			lspconfig.astro.setup({
 				on_attach = on_attach,
 			})
 
